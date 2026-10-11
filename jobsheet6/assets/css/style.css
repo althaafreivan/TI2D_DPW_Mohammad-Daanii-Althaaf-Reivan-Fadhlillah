@@ -8,7 +8,7 @@
 }
 
 body {
-    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+    font-family: "Segoe UI";
     /* Cahaya hangat: Dark slate base with precise radial gradients */
     background-color: #1d1d33;
     background-image: 
@@ -49,6 +49,29 @@ header h1 {
     font-weight: 600;
 }
 
+header h1::before {
+    content: "";
+    display: inline-block;
+    width: 31px;
+    height: 33px;
+    background: url("../svg/Lambang%20perpustakaan.svg") no-repeat center;
+    background-size: contain;
+    flex-shrink: 0;
+}
+
+.nav-toggle {
+    display: none;
+}
+
+.nav-toggle-label {
+    display: none;
+    font-size: 1.6rem;
+    color: #F4F5FB;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
 header nav ul {
     list-style: none;
     display: flex;
@@ -80,7 +103,7 @@ main {
     gap: 24px;
 }
 
-/* ===== Judul Halaman & Breadcrumbs ===== */
+/* ===== Judul Halaman & Kontainer ===== */
 section {
     background: none;
     border: none;
@@ -100,9 +123,9 @@ section h2 {
     margin-bottom: 0;
 }
 
-/* ===== Formulir anggota (Card) ===== */
+/* ===== Formulir (Card) ===== */
 form {
-    /* The form itself is the Pendaftaran anggota card */
+    /* Pendaftaran anggota card */
     background-color: rgba(244, 245, 251, 0.04);
     border: 1px solid rgba(232, 233, 245, 0.19);
     border-radius: 22px;
@@ -129,7 +152,6 @@ form label {
 form input,
 form select {
     width: 100%;
-    /* Match form width naturally */
     padding: 14px 16px;
     background-color: rgba(20, 20, 37, 0.4);
     border: 1px solid rgba(232, 233, 245, 0.19);
@@ -144,7 +166,7 @@ form input:focus,
 form select:focus {
     outline: none;
     border-color: #F4F5FB;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(20, 20, 37, 0.6);
 }
 
 form button[type="submit"] {
@@ -157,7 +179,7 @@ form button[type="submit"] {
     font-weight: 600;
     font-family: "Inter", sans-serif;
     cursor: pointer;
-    align-self: flex-start; /* Keep button sized to content */
+    align-self: flex-start;
     margin-top: 8px;
     transition: opacity 0.3s ease;
 }
@@ -166,7 +188,45 @@ form button[type="submit"]:hover {
     opacity: 0.85;
 }
 
-/* ===== Tabel (For other pages like list.html) ===== */
+/* ===== Kolom Pencarian ===== */
+.search-box {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 400px;
+    margin-bottom: 8px;
+}
+
+.search-box label {
+    font-size: 15px;
+    font-weight: 600;
+    color: #F4F5FB;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 14px 16px;
+    background-color: rgba(20, 20, 37, 0.4);
+    border: 1px solid rgba(232, 233, 245, 0.19);
+    border-radius: 12px;
+    color: #F4F5FB;
+    font-size: 15px;
+    font-family: "Inter", sans-serif;
+    transition: border-color 0.3s ease;
+}
+
+.search-box input:focus {
+    outline: none;
+    border-color: #F4F5FB;
+    background-color: rgba(20, 20, 37, 0.6);
+}
+
+/* ===== Tabel ===== */
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+}
+
 table {
     width: 100%;
     border-collapse: separate;
@@ -200,6 +260,93 @@ tbody tr:last-child td {
 
 tbody tr:hover {
     background-color: rgba(255, 255, 255, 0.03);
+}
+
+/* Aksi Tabel (Tombol Edit & Hapus) */
+td button {
+    padding: 8px 18px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: "Inter", sans-serif;
+    border: 1px solid rgba(232, 233, 245, 0.19);
+    cursor: pointer;
+    background-color: rgba(244, 245, 251, 0.08);
+    color: #F4F5FB;
+    transition: all 0.2s ease;
+    margin-right: 6px;
+}
+
+td button:hover {
+    background-color: rgba(244, 245, 251, 0.18);
+}
+
+td button.btn-hapus,
+td button:last-of-type {
+    color: #ff9d9d;
+    border-color: rgba(255, 157, 157, 0.3);
+    background-color: rgba(255, 157, 157, 0.1);
+}
+
+td button.btn-hapus:hover,
+td button:last-of-type:hover {
+    background-color: rgba(255, 157, 157, 0.2);
+}
+
+/* Status & Pesan */
+.error {
+    display: block;
+    color: #ff9d9d;
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+#loading-indicator {
+    color: #bbbacb;
+    font-size: 14px;
+}
+
+/* ===== Dashboard (Ringkasan) ===== */
+/* Mendukung langsung section maupun wrapper div lama */
+section:nth-of-type(2),
+section:nth-of-type(2) > div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+section:nth-of-type(2) h2 {
+    width: 100%;
+}
+
+section:nth-of-type(2) > div {
+    width: 100%;
+}
+
+article {
+    flex: 1 1 200px;
+    background-color: rgba(244, 245, 251, 0.05);
+    border: 1px solid rgba(232, 233, 245, 0.25);
+    border-radius: 22px;
+    padding: 24px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+article h3 {
+    font-size: 16px;
+    font-weight: 400;
+    color: #F4F5FB;
+    margin: 0;
+}
+
+article p {
+    font-size: 36px;
+    font-weight: 700;
+    color: #F4F5FB;
+    margin: 0;
 }
 
 /* ===== Footer ===== */
@@ -240,7 +387,8 @@ footer {
         margin-top: 1rem;
     }
 
-    header nav.nav-open {
+    header nav.nav-open,
+    .nav-toggle:checked ~ nav {
         display: block;
     }
 
@@ -248,37 +396,4 @@ footer {
         flex-direction: column;
         gap: 0.5rem;
     }
-}
-
-/* ===== Dashboard (Ringkasan) ===== */
-section:nth-of-type(2) {
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
-section:nth-of-type(2) h2 {
-    width: 100%;
-}
-
-article {
-    flex: 1 1 200px;
-    background-color: rgba(244, 245, 251, 0.05);
-    border: 1px solid rgba(232, 233, 245, 0.25);
-    border-radius: 22px;
-    padding: 24px 28px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-article h3 {
-    font-size: 16px;
-    font-weight: 400;
-    margin: 0;
-}
-
-article p {
-    font-size: 36px;
-    font-weight: 700;
-    margin: 0;
 }
