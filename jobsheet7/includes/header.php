@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once __DIR__ . '/session.php';
 
 // Prefix relatif ke root proyek ini (bukan root domain) — supaya
 // /assets, /index.php, dst tetap benar walau proyek diakses lewat
