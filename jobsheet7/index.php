@@ -7,7 +7,7 @@ $totalAnggota = count($_SESSION['anggota'] ?? []);
 ?>
         <section>
             <h2>Selamat Datang di Sistem Perpustakaan Mini</h2>
-            <p>Aplikasi sederhana untuk mengelola data buku dan anggota perpustakaan.</p>
+            <p class="subheading">Aplikasi sederhana untuk mengelola data buku dan anggota perpustakaan.</p>
         </section>
 
         <section>
@@ -24,5 +24,6 @@ $totalAnggota = count($_SESSION['anggota'] ?? []);
                 <h3>Sedang Dipinjam</h3>
                 <p>0</p>
             </article>
+            <button class="btn-nyoba">Coba</button>
         </section>
 <?php include __DIR__ . '/includes/footer.php'; ?>
